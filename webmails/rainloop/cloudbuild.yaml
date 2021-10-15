@@ -1,0 +1,15 @@
+substitutions:
+  _IMAGE_TAG: '1.8'    # Tag for current build
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'eu.gcr.io/silken-dogfish-846/rainloop:${_IMAGE_TAG}'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'eu.gcr.io/silken-dogfish-846/rainloop:${_IMAGE_TAG}'
+images:
+  - 'eu.gcr.io/silken-dogfish-846/rainloop:${_IMAGE_TAG}'
